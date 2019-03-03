@@ -1,3 +1,4 @@
+language: javascript
 sudo: required
 services:
   - docker
@@ -7,4 +8,3 @@ before_install:
 
 script:
   - docker run mikemcgarry/frontend -v /app/node_modules -v $(pwd):/app npm run test -- --coverage
-  
