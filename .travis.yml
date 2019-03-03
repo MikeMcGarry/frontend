@@ -8,3 +8,16 @@ before_install:
 
 script:
   - docker run -v /app/node_modules -v $(pwd):/app mikemcgarry/frontend npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-2"
+  app: "frontend"
+  env: "Frontend-env"
+  bucket_name: "elasticbeanstalk-eu-west-2-705284077756"
+  bucket_path: "frontend"
+  on:
+    branch: master
+  access_key_id: $beanstalk_key_id
+  secret_acess_key:
+    secure: "$beanstalk_key"
